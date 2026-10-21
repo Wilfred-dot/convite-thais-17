@@ -1,0 +1,11 @@
+export const ICS = [
+  "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Thais17//PT", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+  "UID:thais17-20261031@aniversario-thais-17",
+  "DTSTAMP:20261019T180000Z",
+  "DTSTART:20261031T100000Z", "DTEND:20261031T160000Z",
+  "SUMMARY:17 anos da Thais Laysa",
+  "LOCATION:Casa da Celia\\, Entrada do Machute\\, Bairro do Aeroporto\\, Beira",
+  "DESCRIPTION:Dress code: rosa. Confirma a presença até 28 de Outubro.",
+  "BEGIN:VALARM", "TRIGGER:-P1D", "ACTION:DISPLAY", "DESCRIPTION:Amanhã é a festa dos 17 anos da Thais Laysa", "END:VALARM",
+  "END:VEVENT", "END:VCALENDAR",
+].join("\r\n");
