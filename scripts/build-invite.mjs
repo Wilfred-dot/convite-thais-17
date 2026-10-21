@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+import { fileURLToPath } from "node:url";
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tpl = fs.readFileSync(path.join(root, "invite/template.html"), "utf8");
 
 // A música é o primeiro ficheiro .mp3 (ou .m4a) da pasta public, seja qual for o nome
