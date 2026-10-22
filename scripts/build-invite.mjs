@@ -1,13 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
-const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+import { fileURLToPath } from "node:url";
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tpl = fs.readFileSync(path.join(root, "invite/template.html"), "utf8");
 
 // A música é o primeiro ficheiro .mp3 (ou .m4a) da pasta public, seja qual for o nome
 const musicFile = fs.readdirSync(path.join(root, "public")).filter((f) => /\.(mp3|m4a)$/i.test(f)).sort()[0] || "musica.mp3";
 const musicType = /\.m4a$/i.test(musicFile) ? "audio/mp4" : "audio/mpeg";
-
-const ALBUM_URL = "https://drive.google.com/drive/folders/1HjlU6OYaQQZy-BXWTae3RJpxM3Bwb3sM?usp=sharing";
 
 // Versão do site (Next.js): ficheiros servidos de /public
 const site = tpl
@@ -15,7 +14,7 @@ const site = tpl
   .replace("__MUSIC__", "/" + encodeURIComponent(musicFile))
   .replace("__ICS__", "/festa.ics")
   .replace("__VCF__", "/wilfred-deloviar.vcf")
-  .replace("__ALBUM__", ALBUM_URL).replace("__ALBUM_LIVE__", "true");
+  .replace("__ALBUM_LIVE__", "true");
 fs.writeFileSync(
   path.join(root, "lib/inviteHtml.ts"),
   "// Gerado por scripts/build-invite.mjs a partir de invite/template.html. Não editar.\nexport const INVITE_HTML = " + JSON.stringify(site) + ";\n"
@@ -31,7 +30,6 @@ if (out) {
     .replace("__MUSIC__", b64("public/" + musicFile, musicType))
     .replace("__ICS__", ics)
     .replace("__VCF__", b64("public/wilfred-deloviar.vcf", "text/vcard"))
-    .replace("__ALBUM__", ALBUM_URL)
     .replace("__ALBUM_LIVE__", "false")
     .replace('"__GUEST__"', '""');
   fs.writeFileSync(out, html);

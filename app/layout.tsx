@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Thais Laysa celebra 17 anos",
     description: "Sábado, 31 de Outubro de 2026, às 12h · Beira",
-    images: [{ url: "/og-v2.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
     type: "website",
     locale: "pt_PT",
   },
-  twitter: { card: "summary_large_image", images: ["/og-v2.jpg"] },
+  twitter: { card: "summary_large_image", images: ["/og.jpg"] },
 };
 
 export const viewport: Viewport = { themeColor: "#22040e", width: "device-width", initialScale: 1 };

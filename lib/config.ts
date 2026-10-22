@@ -11,7 +11,7 @@ export const EVENT = {
   rsvpDeadlineISO: "2026-10-28T23:59:59+02:00",
   place: "Casa da prima Celia",
   address: "Entrada no Machute, Bairro do Aeroporto, Beira",
-  mapsUrl: "https://maps.app.goo.gl/MDDdgEJGuP3HeKX18",
+  mapsUrl: "https://maps.app.goo.gl/EKpGaaGp4C91dchL6",
   hashtag: "#ThaisWah17",
   instagram: "https://www.instagram.com/thais_layysa",
   instagramHandle: "@thais_layysa",

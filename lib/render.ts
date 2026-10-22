@@ -1,14 +1,15 @@
 import { INVITE_HTML } from "./inviteHtml";
+import { SITE_URL } from "./config";
 
 const clean = (s: string) => s.replace(/[^\p{L}\p{N}\s'’-]/gu, "").replace(/\s+/g, " ").trim().slice(0, 80);
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
-export function renderInvite(guest: string, origin = ""): string {
+export function renderInvite(guest: string): string {
   const name = clean(guest);
   const title = name ? `Convite para ${name} · Thais 17 Anos` : "Thais Laysa · 17 Anos";
-  const ogTitle = name ? `${name}, tens um convite especial` : "Thais Laysa celebra 17 anos";
-  const desc = "Festa de Aniversário · Sábado, 31 de Outubro, às 12h00 · Beira";
-  const img = `${origin}/og-v2.jpg`;
+  const ogTitle = name ? `${name}, estás convidado(a) para os 17 anos da Thais` : "Thais Laysa celebra 17 anos";
+  const desc = "Sábado, 31 de Outubro de 2026, às 12h · Beira";
+  const img = `${SITE_URL}/og.jpg`;
   const body = INVITE_HTML
     .replace(/<title>.*?<\/title>/, "")
     .replace('"__GUEST__"', JSON.stringify(name).replace(/</g, "\\u003c"));
